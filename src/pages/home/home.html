@@ -1,14 +1,89 @@
 <ion-header>
+
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
   </ion-navbar>
+
+  <ion-toolbar >
+    <!--section1 blutooth scaning-->
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Search for devices</ion-label>
+          <ion-select [(ngModel)]="selectedDevice">
+            <label for="paird devices">Paired devices</label>
+            <ion-option value="{{pair.address}}" *ngFor="let pair of pairedDevices" (click)="chooseDevice()">{{pair.name}}</ion-option>
+            <label for="bounded devices">Other devices</label>
+            <ion-option value="unpair.address" *ngFor="let unpair of blutoothUnpairedDevices" (click)="chooseDevice()">{{unpair.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <button ion-button round><ion-icon name="ios-bluetooth"></ion-icon></button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+<!--all section 2 servo + car controller-->
+<ion-row>
+  <!--left section-->
+  <ion-col>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-12 text-center>
+                <ion-label text-center>Servo position</ion-label>
+                <button ion-button style="margin-right:5px;" round><ion-icon name="ios-arrow-back"></ion-icon></button>
+                <button ion-button round><ion-icon name="ios-arrow-forward"></ion-icon></button>
+            </ion-col>
+            <ion-col col-12 text-center>
+              <ion-label text-center>Modes</ion-label>
+              <button ion-button round><ion-icon name="ios-arrow-round-up"></ion-icon></button>
+              <button ion-button round><ion-icon name="ios-swap"></ion-icon></button>
+              <button ion-button round><ion-icon name="ios-resize"></ion-icon></button>
+            </ion-col> 
+        </ion-row>
+    </ion-grid>
+
+
+    </ion-col>
+  <!--right section TODO-->
+    <ion-col >
+      <!--controller of the car-->
+
+      <ion-grid style="margin-top:20px;">
+        <label for="car controll" text-center style="margin-bottom: 5px;">car controller</label>
+        <ion-row>
+          <ion-col style="display: inline-block;" text-center>
+            <button ion-button round><ion-icon name="ios-arrow-up"></ion-icon></button>
+          </ion-col>
+        </ion-row>
+        <ion-row style="display: inline-block;" text-center>
+          <button ion-button style="margin-right: 5px;" round><ion-icon name="ios-arrow-back"></ion-icon></button>
+          <button ion-button round><ion-icon name="ios-arrow-forward"></ion-icon></button>
+        </ion-row>
+        <ion-row>
+          <ion-col style="display: inline-block;" text-center>
+            <button ion-button round><ion-icon name="ios-arrow-down"></ion-icon></button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-col>
+</ion-row>
+<!--section 3 speed controller TODO-->
+<ion-row>
+  <ion-col>
+      <ion-item>
+          <ion-range min="0" max="5" step="1" snaps="true" dualKnobs="false" pin="true" [(ngModel)]="rangevalue">
+            <ion-icon range-left small name="ios-speedometer"></ion-icon>
+            <ion-icon range-right name="ios-speedometer"></ion-icon>
+          </ion-range>
+      </ion-item>
+  </ion-col>
+</ion-row>
 </ion-content>

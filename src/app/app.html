@@ -1,1 +1,31 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content" id='myMenu'>
+    <ion-header>
+      <ion-toolbar class="menuHeader" color="primary" align-title="center">
+        <img *ngIf="userImage" height="auto" width="50" style="margin-bottom: 2rem; height:80px; width:80px; position: relative; left: 1rem; top:2rem;  border-radius:50%;"
+        src="{{imgbasurl}}{{userImage}}?version={{ran}}">
+  
+        <img *ngIf="!userImage" height="auto" width="50" style="margin-bottom: 2rem; height:80px; width:80px; position: relative; left: 1rem; top:2rem;  border-radius:50%;"
+        src="assets/imgs/765-default-avatar.png">
+  
+          <!-- {{imgbasurl}}{{userImage}}-->
+        <h5 style="position: relative; left: 1rem; bottom:1rem; color: white;">{{userName}}</h5>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content>
+      <ion-list style="padding-right:1rem;">
+        <button class="menuButton" menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" icon-start>
+            <ion-icon name="{{p.ico}}"></ion-icon>
+            {{p.title}}
+        </button>
+        <button menuClose ion-item (click)="ExiteNav()" icon-start>
+              <ion-icon name="ios-exit-outline"></ion-icon>
+              Exite
+        </button>
+      </ion-list>
+    </ion-content>
+  
+  </ion-menu>
+  
+  <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+  <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
