@@ -22,10 +22,22 @@
         </ion-item>
       </ion-col>
       <ion-col>
-        <button ion-button round><ion-icon name="ios-bluetooth"></ion-icon></button>
+        <button ion-button round><ion-icon name="search"></ion-icon></button>
       </ion-col>
     </ion-row>
   </ion-toolbar>
+  <!--TABS of auto parking or not-->
+  <div  text-center>
+    <ion-row>
+      <ion-col>
+        <button full ion-button  (click)="parking(1)" id="butn1">Normal Mode</button>
+      </ion-col>
+
+      <ion-col>
+        <button full ion-button color="dark"  (click)="parking(2)" id="butn1">Auto parking Mode</button>
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-header>
 
 <ion-content>
@@ -37,14 +49,14 @@
         <ion-row>
             <ion-col col-12 text-center>
                 <ion-label text-center>Servo position</ion-label>
-                <button ion-button style="margin-right:5px;" round><ion-icon name="ios-arrow-back"></ion-icon></button>
-                <button ion-button round><ion-icon name="ios-arrow-forward"></ion-icon></button>
+                <button ion-button (click)="btnClicked(0)" style="margin-right:5px;" round><ion-icon name="ios-arrow-back"></ion-icon></button>
+                <button ion-button round (click)="btnClicked(1)"><ion-icon name="ios-arrow-forward"></ion-icon></button>
             </ion-col>
             <ion-col col-12 text-center>
               <ion-label text-center>Modes</ion-label>
-              <button ion-button round><ion-icon name="ios-arrow-round-up"></ion-icon></button>
-              <button ion-button round><ion-icon name="ios-swap"></ion-icon></button>
-              <button ion-button round><ion-icon name="ios-resize"></ion-icon></button>
+              <button (click)="btnClicked(2)" ion-button round><ion-icon name="ios-arrow-round-up"></ion-icon></button>
+              <button (click)="btnClicked(3)" ion-button round><ion-icon name="ios-swap"></ion-icon></button>
+              <button (click)="btnClicked(4)" ion-button round><ion-icon name="ios-resize"></ion-icon></button>
             </ion-col> 
         </ion-row>
     </ion-grid>
@@ -59,16 +71,16 @@
         <label for="car controll" text-center style="margin-bottom: 5px;">car controller</label>
         <ion-row>
           <ion-col style="display: inline-block;" text-center>
-            <button ion-button round><ion-icon name="ios-arrow-up"></ion-icon></button>
+            <button (click)="btnClicked(5)" ion-button round><ion-icon name="ios-arrow-up"></ion-icon></button>
           </ion-col>
         </ion-row>
         <ion-row style="display: inline-block;" text-center>
-          <button ion-button style="margin-right: 5px;" round><ion-icon name="ios-arrow-back"></ion-icon></button>
-          <button ion-button round><ion-icon name="ios-arrow-forward"></ion-icon></button>
+          <button (click)="btnClicked(6)" ion-button style="margin-right: 5px;" round><ion-icon name="ios-arrow-back"></ion-icon></button>
+          <button (click)="btnClicked(7)" ion-button round><ion-icon name="ios-arrow-forward"></ion-icon></button>
         </ion-row>
         <ion-row>
           <ion-col style="display: inline-block;" text-center>
-            <button ion-button round><ion-icon name="ios-arrow-down"></ion-icon></button>
+            <button (click)="btnClicked(8)" ion-button round><ion-icon name="ios-arrow-down"></ion-icon></button>
           </ion-col>
         </ion-row>
       </ion-grid>
